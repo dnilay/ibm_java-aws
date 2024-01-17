@@ -1,6 +1,7 @@
 package com.ibm.example;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -23,6 +24,7 @@ public class App {
 			System.out.println("1. Add A New Guiter.");
 			System.out.println("2. Search A Guiter.");
 			System.out.println("3. Get Guiter.");
+			System.out.println("4. Display All Available Guiters.");
 			System.out.println("0. Exit.");
 			System.out.print("enter your choice: ");
 			choice = scanner.nextInt();
@@ -39,7 +41,7 @@ public class App {
 				}
 				System.out.print("Enter Builder Name: ");
 				String b = scanner.next();
-				scanner.next();
+				//scanner.next();
 				System.out.print("Enter Model: ");
 				String m = scanner.next();
 				System.out.print("Enter Guiter Type: ");
@@ -47,7 +49,7 @@ public class App {
 				GuiterType gType=GuiterType.AQUASTIC;
 				try {
 					gType = GuiterType.valueOf(t);
-					System.out.print("Enter BackWood: ");
+					
 
 				} catch (IllegalArgumentException e) {
 					System.out.println("invalid guiter type");
@@ -79,6 +81,13 @@ public class App {
 					System.out.println("invalid guiter object");
 				} else {
 					System.out.println(g1);
+				}
+				break;
+			case 5:
+				List<Guiter> list=guiterRepository.getAllGuiters();
+				for(Guiter g2:list)
+				{
+					System.out.println(g2);
 				}
 				break;
 			case 0:

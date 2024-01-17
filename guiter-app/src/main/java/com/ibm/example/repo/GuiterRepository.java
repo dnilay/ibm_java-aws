@@ -1,5 +1,7 @@
 package com.ibm.example.repo;
 
+import java.util.List;
+
 import com.ibm.example.model.Guiter;
 
 public interface GuiterRepository {
@@ -9,5 +11,6 @@ public interface GuiterRepository {
 	Guiter getGuiter(String serialNumber);
 
 	Guiter searchGuiter(Guiter guiter);
+	List<Guiter> getAllGuiters();
 
 }

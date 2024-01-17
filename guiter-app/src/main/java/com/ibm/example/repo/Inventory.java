@@ -37,6 +37,7 @@ public class Inventory implements GuiterRepository {
 
 	@Override
 	public Guiter searchGuiter(Guiter guiter) {
+		
 		Guiter tempGuiter = null;
 		for (Guiter g : guiters) {
 			if (g.equals(guiter)) {
@@ -49,4 +50,16 @@ public class Inventory implements GuiterRepository {
 		return tempGuiter;
 	}
 
+	@Override
+	public List<Guiter> getAllGuiters() {
+		// TODO Auto-generated method stub
+		sort(guiters);
+		return guiters;
+	}
+	private static void sort(List<Guiter> guiters2) {
+		 
+        guiters2.sort((o1, o2)
+                  -> o1.getModel().compareTo(
+                      o2.getModel()));
+    }
 }
