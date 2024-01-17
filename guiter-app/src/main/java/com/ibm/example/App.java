@@ -25,6 +25,7 @@ public class App {
 			System.out.println("2. Search A Guiter.");
 			System.out.println("3. Get Guiter.");
 			System.out.println("4. Display All Available Guiters.");
+			System.out.println("5. Display by Type.");
 			System.out.println("0. Exit.");
 			System.out.print("enter your choice: ");
 			choice = scanner.nextInt();
@@ -83,11 +84,27 @@ public class App {
 					System.out.println(g1);
 				}
 				break;
-			case 5:
+			case 4:
 				List<Guiter> list=guiterRepository.getAllGuiters();
 				for(Guiter g2:list)
 				{
 					System.out.println(g2);
+				}
+				break;
+			case 5:
+				System.out.print("Enter Guiter Type: ");
+				t=scanner.next();
+				List<Guiter> l=guiterRepository.getByGuiterType(t);
+				if(l.isEmpty())
+				{
+					System.out.println("list is empty");
+				}
+				else
+				{
+					for(Guiter g5:l)
+					{
+						System.out.println(g5);
+					}
 				}
 				break;
 			case 0:

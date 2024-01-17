@@ -12,5 +12,6 @@ public interface GuiterRepository {
 
 	Guiter searchGuiter(Guiter guiter);
 	List<Guiter> getAllGuiters();
+	List<Guiter> getByGuiterType(String type);
 
 }
