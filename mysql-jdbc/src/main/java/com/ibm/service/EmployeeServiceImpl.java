@@ -58,6 +58,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee findEmployeeById(int employeeId) throws SQLException {
 		// TODO Auto-generated method stub
 		return employeeRepository.findEmployeeById(employeeId);
+	}
+
+	@Override
+	public void deleteEmployeeById(int employeeId) throws SQLException {
+		// TODO Auto-generated method stub
+		employeeRepository.deleteEmployeeById(employeeId);
 	} 
 
 }

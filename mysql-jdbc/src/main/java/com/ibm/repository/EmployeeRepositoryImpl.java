@@ -7,13 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.ibm.factory.MyFactory;
 import com.ibm.model.Employee;
 
 public class EmployeeRepositoryImpl implements EmployeeRepository {
- 
+
 	private Connection connection = null;
 	private List<Employee> list = null;
 	private Statement statement = null;
@@ -59,18 +58,16 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 	@Override
 	public Employee updateEmployeeById(Employee employee) throws SQLException {
-		
-		preparedStatement=connection.prepareStatement("update employees set first_name=?,last_name=?,email=? where employee_id=?");
+
+		preparedStatement = connection
+				.prepareStatement("update employees set first_name=?,last_name=?,email=? where employee_id=?");
 		preparedStatement.setString(1, employee.getFirstName());
 		preparedStatement.setString(2, employee.getLastName());
 		preparedStatement.setString(3, employee.getEmail());
 		preparedStatement.setInt(4, employee.getEmployeeId());
 		preparedStatement.executeUpdate();
-		
 		return employee;
-		
-		
-	
+
 	}
 
 	@Override
@@ -86,6 +83,24 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
 		}
 		return tempEmployee;
+	}
+
+	@Override
+	public void deleteEmployeeById(int employeeId) throws SQLException {
+		// TODO Auto-generated method stub
+		
+		preparedStatement=connection.prepareStatement("delete from employees where employee_id=?");
+	    preparedStatement.setInt(1, employeeId);
+	    int result=preparedStatement.executeUpdate();
+	    if(result>0)
+	    {
+	    	System.out.println("deletion succeed..");
+	    }
+	    else
+	    {
+	    	System.out.println("id not found.");
+	    }
+		
 	}
 
 }
