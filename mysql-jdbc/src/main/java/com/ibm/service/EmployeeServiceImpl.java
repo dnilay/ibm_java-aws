@@ -2,6 +2,7 @@ package com.ibm.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 import com.ibm.model.Employee;
 import com.ibm.repository.EmployeeRepository;
@@ -26,5 +27,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 		// TODO Auto-generated method stub
 		return employeeRepository.getAllEmployees();
 	}
+
+	@Override
+	public Employee createEmployee(Employee employee) throws SQLException {
+		// TODO Auto-generated method stub
+		employee.setEmployeeId(generateId());
+		return employeeRepository.createEmployee(employee);
+	}
+	
+	private Integer generateId()
+	{
+		UUID idOne = UUID.randomUUID();
+		String str = "" + idOne;
+		int uid = str.hashCode();
+	
+		String filterStr = "" + uid;
+		str = filterStr.replaceAll("-", "");
+		System.out.println(str);
+		int a=Integer.parseInt(str);
+		return a;
+	} 
 
 }

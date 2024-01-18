@@ -7,4 +7,6 @@ import com.ibm.model.Employee;
 
 public interface EmployeeService {
 	List<Employee> getAllEmployees() throws SQLException;
+	Employee createEmployee(Employee employee) throws SQLException;
+
 }
