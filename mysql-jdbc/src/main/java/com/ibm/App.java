@@ -15,7 +15,7 @@ public class App
        try {
     	   
     	   //DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-    	   Connection connection=DriverManager.getConnection("jdbc://localhost:3306/hr","root","root")
+    	   Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/hr","root","root");
 		   System.out.println("done."+connection);
 	} catch (SQLException e) {
 		// TODO: handle exception
