@@ -46,6 +46,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 		System.out.println(str);
 		int a=Integer.parseInt(str);
 		return a;
+	}
+
+	@Override
+	public Employee updateEmployeeById(Employee employee) throws SQLException {
+		// TODO Auto-generated method stub
+		return employeeRepository.updateEmployeeById(employee);
+	}
+
+	@Override
+	public Employee findEmployeeById(int employeeId) throws SQLException {
+		// TODO Auto-generated method stub
+		return employeeRepository.findEmployeeById(employeeId);
 	} 
 
 }
