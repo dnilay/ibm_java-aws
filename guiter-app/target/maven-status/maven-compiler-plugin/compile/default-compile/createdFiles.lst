@@ -1,4 +1,5 @@
 com\ibm\example\App.class
 com\ibm\example\repo\Inventory.class
 com\ibm\example\model\Guiter.class
+com\ibm\example\model\GuiterType.class
 com\ibm\example\repo\GuiterRepository.class
