@@ -2,24 +2,33 @@ package com.ibm;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-       try {
-    	   
-    	   //DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-    	   Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/hr","root","root");
-		   System.out.println("done."+connection);
-	} catch (SQLException e) {
-		// TODO: handle exception
-		e.printStackTrace();
+import com.ibm.model.Employee;
+import com.ibm.service.EmployeeService;
+import com.ibm.service.EmployeeServiceImpl;
+
+public class App {
+	private  EmployeeService employeeService;
+	{
+		employeeService=new EmployeeServiceImpl();
 	}
-    }
+	public static void main(String[] args) {
+		try {
+
+			List<Employee> employees=new App().employeeService.getAllEmployees();
+			
+			for(Employee e:employees)
+			{
+				System.out.println(e);
+			}
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
 }
