@@ -26,4 +26,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.getAllCustomers();
 	}
 
+	@Override
+	public Customer getCustomerByCustomerId(int customerId) throws Exception {
+		// TODO Auto-generated method stub
+		return customerRepository.getCustomerByCustomerId(customerId);
+	}
+
 }

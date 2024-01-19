@@ -33,7 +33,16 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	public List<Customer> getAllCustomers() throws Exception {
 		Session session=sessionFactory.openSession();
 		TypedQuery<Customer> query=session.createQuery("FROM Customer C",Customer.class);
+		
 		return query.getResultList();
+	}
+
+	@Override
+	public Customer getCustomerByCustomerId(int customerId) throws Exception {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		Customer customer=session.find(Customer.class, customerId);
+		return customer;
 	}
 
 }

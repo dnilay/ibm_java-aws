@@ -26,6 +26,8 @@ public class App {
 	public static void main(String[] args)throws IOException {
 		BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(System.in));
 		Customer customer=new Customer();
+		
+		
 		try {
 			
 			/*
@@ -36,9 +38,18 @@ public class App {
 			 * System.out.println("One Customer created: "+customerService.createCustomer(
 			 * customer));
 			 */
-			for(Customer c:customerService.getAllCustomers())
+			/*
+			 * for(Customer c:customerService.getAllCustomers()) { System.out.println(c); }
+			 */
+			System.out.println("enter customer id: ");
+			customer=customerService.getCustomerByCustomerId(Integer.parseInt(bufferedReader.readLine()));
+			if(customer==null)
 			{
-				System.out.println(c);
+				System.out.println("no such customer available..");
+			}
+			else
+			{
+				System.out.println(customer);
 			}
 			
 		} catch (Exception e) {
