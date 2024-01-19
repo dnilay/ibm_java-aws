@@ -9,8 +9,9 @@
         <property name="hibernate.connection.url">jdbc:mysql://52.91.70.135:3307/hr</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.default_schema">hr</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
     </session-factory>
 </hibernate-configuration>

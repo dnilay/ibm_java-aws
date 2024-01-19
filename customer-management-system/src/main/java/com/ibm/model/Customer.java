@@ -18,13 +18,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "customer")
 public class Customer {
 	@Id
+	
 	@Column(name = "customer_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private int customerId;
 	@Column(name = "customer_name")
 	private String customerName;
 	@Column(name = "customer_address")
 	private String customerAddress;
+
 	public Customer(String customerName, String customerAddress) {
 		super();
 		this.customerName = customerName;
