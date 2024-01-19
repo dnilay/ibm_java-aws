@@ -45,4 +45,22 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		return customer;
 	}
 
+	@Override
+	public Customer getCustomerByEmail(String email) throws Exception {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		TypedQuery<Customer> query=session.createQuery("FROM Customer C where C.customerEmail=:e",Customer.class);
+		query.setParameter("e", email);
+		if(query.getResultList().size()>0)
+		{
+			Customer customer=query.getResultList().get(0);
+			return customer;
+		}
+		else
+		{
+			return null;
+		}
+		
+	}
+
 }

@@ -32,4 +32,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.getCustomerByCustomerId(customerId);
 	}
 
+	@Override
+	public Customer getCustomerByEmail(String email) throws Exception {
+		// TODO Auto-generated method stub
+		return customerRepository.getCustomerByEmail(email);
+	}
+
 }
