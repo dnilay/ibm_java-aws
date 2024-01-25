@@ -23,5 +23,12 @@ public class Account {
 	private String accountHolderAddress;
 	@Column(name = "account_holder_email")
 	private String email;
+	public Account(String accountHolderName, String accountHolderAddress, String email) {
+		super();
+		this.accountHolderName = accountHolderName;
+		this.accountHolderAddress = accountHolderAddress;
+		this.email = email;
+	}
 
+	
 }

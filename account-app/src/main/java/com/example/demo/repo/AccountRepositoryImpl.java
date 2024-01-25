@@ -42,15 +42,34 @@ public class AccountRepositoryImpl implements AccountRepository {
 	}
 
 	@Override
-	public Account getAccountByaccountNumber(String accountNumber) throws AccountNotFoundException {
+	public Account getAccountByaccountNumber(String accountNumber)
+			throws com.example.demo.exception.AccountNotFoundException {
 		// TODO Auto-generated method stub
 		Session session = sessionFactory.openSession();
-		Account account=session.get(Account.class, accountNumber);
-		if(account==null)
-		{
-			throw new AccountNotFoundException("account with "+accountNumber+" not found");
+		Account account = session.get(Account.class, accountNumber);
+		if (account == null) {
+			throw new com.example.demo.exception.AccountNotFoundException(
+					"account with " + accountNumber + " not found");
 		}
 		return account;
+	}
+
+	@Override
+	public Account updateAccountByAccountNumber(String accountNumber, Account account)
+			throws com.example.demo.exception.AccountNotFoundException {
+		// TODO Auto-generated method stub
+		Account tempAccount = getAccountByaccountNumber(accountNumber);
+		if (tempAccount == null) {
+			throw new com.example.demo.exception.AccountNotFoundException("account with " + accountNumber + " not found");
+		}
+		Session session = sessionFactory.openSession();
+		tempAccount.setAccountHolderName(account.getAccountHolderName());
+		tempAccount.setAccountHolderAddress(account.getAccountHolderAddress());
+		tempAccount.setEmail(account.getEmail());
+		session.getTransaction().begin();
+		session.merge(tempAccount);
+		session.getTransaction().commit();
+		return tempAccount;
 	}
 
 }

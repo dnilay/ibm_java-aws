@@ -2,8 +2,6 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import javax.security.auth.login.AccountNotFoundException;
-
 import org.springframework.stereotype.Component;
 
 import com.example.demo.model.Account;
@@ -29,9 +27,17 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account getAccountByaccountNumber(String accountNumber) throws AccountNotFoundException {
+	public Account getAccountByaccountNumber(String accountNumber)
+			throws com.example.demo.exception.AccountNotFoundException {
 		// TODO Auto-generated method stub
 		return accountRepository.getAccountByaccountNumber(accountNumber);
+	}
+
+	@Override
+	public Account updateAccountByAccountNumber(String accountNumber, Account account)
+			throws com.example.demo.exception.AccountNotFoundException {
+		// TODO Auto-generated method stub
+		return accountRepository.updateAccountByAccountNumber(accountNumber, account);
 	}
 
 }
