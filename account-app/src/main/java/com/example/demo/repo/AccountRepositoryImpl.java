@@ -3,8 +3,6 @@ package com.example.demo.repo;
 
 import java.util.List;
 
-import javax.security.auth.login.AccountNotFoundException;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
@@ -60,7 +58,8 @@ public class AccountRepositoryImpl implements AccountRepository {
 		// TODO Auto-generated method stub
 		Account tempAccount = getAccountByaccountNumber(accountNumber);
 		if (tempAccount == null) {
-			throw new com.example.demo.exception.AccountNotFoundException("account with " + accountNumber + " not found");
+			throw new com.example.demo.exception.AccountNotFoundException(
+					"account with " + accountNumber + " not found");
 		}
 		Session session = sessionFactory.openSession();
 		tempAccount.setAccountHolderName(account.getAccountHolderName());
@@ -70,6 +69,25 @@ public class AccountRepositoryImpl implements AccountRepository {
 		session.merge(tempAccount);
 		session.getTransaction().commit();
 		return tempAccount;
+	}
+
+	@Override
+	@Transactional
+	public void deleteAccountByAccountNumber(String accountNumber)
+			throws com.example.demo.exception.AccountNotFoundException {
+		// TODO Auto-generated method stub
+
+		Session session = sessionFactory.openSession();
+		session.getTransaction().begin();
+		Account tempAccount = getAccountByaccountNumber(accountNumber);
+		if (tempAccount == null) {
+			throw new com.example.demo.exception.AccountNotFoundException(
+					"account with " + accountNumber + " not found");
+		}
+
+		session.remove(session.merge(tempAccount));
+		session.getTransaction().commit();
+
 	}
 
 }

@@ -61,7 +61,7 @@ public class AccountApi {
 	@DeleteMapping("/{accountNumber}")
 	public void deleteAccount(@PathVariable("accountNumber") String accountNumber) throws AccountNotFoundException
 	{
-		
+		accountService.deleteAccountByAccountNumber(accountNumber);
 	}
 
 }

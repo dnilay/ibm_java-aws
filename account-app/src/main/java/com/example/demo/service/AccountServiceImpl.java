@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.example.demo.exception.AccountNotFoundException;
 import com.example.demo.model.Account;
 import com.example.demo.repo.AccountRepository;
 
@@ -38,6 +39,13 @@ public class AccountServiceImpl implements AccountService {
 			throws com.example.demo.exception.AccountNotFoundException {
 		// TODO Auto-generated method stub
 		return accountRepository.updateAccountByAccountNumber(accountNumber, account);
+	}
+
+	@Override
+	public void deleteAccountByAccountNumber(String accountNumber) throws AccountNotFoundException {
+		// TODO Auto-generated method stub
+		accountRepository.deleteAccountByAccountNumber(accountNumber);
+
 	}
 
 }
