@@ -12,18 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.demo.model.Account;
 
 import jakarta.persistence.TypedQuery;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @Component(value = "accountRepository")
-
 @EnableTransactionManagement
 public class AccountRepositoryImpl implements AccountRepository {
 
-	private SessionFactory sessionFactory;
-
-	public AccountRepositoryImpl(SessionFactory sessionFactory) {
-		super();
-		this.sessionFactory = sessionFactory;
-	}
+	private final SessionFactory sessionFactory;
 
 	@Override
 
