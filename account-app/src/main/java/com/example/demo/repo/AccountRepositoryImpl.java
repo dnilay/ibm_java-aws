@@ -3,6 +3,8 @@ package com.example.demo.repo;
 
 import java.util.List;
 
+import javax.security.auth.login.AccountNotFoundException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
@@ -37,6 +39,18 @@ public class AccountRepositoryImpl implements AccountRepository {
 		Session session = sessionFactory.openSession();
 		TypedQuery<Account> query = session.createQuery("FROM Account A", Account.class);
 		return query.getResultList();
+	}
+
+	@Override
+	public Account getAccountByaccountNumber(String accountNumber) throws AccountNotFoundException {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+		Account account=session.get(Account.class, accountNumber);
+		if(account==null)
+		{
+			throw new AccountNotFoundException("account with "+accountNumber+" not found");
+		}
+		return account;
 	}
 
 }
