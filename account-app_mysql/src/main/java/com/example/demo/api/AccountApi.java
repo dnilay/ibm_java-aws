@@ -66,7 +66,7 @@ public class AccountApi {
 		return ResponseEntity.status(HttpStatus.CREATED).body(accountService.createAccount(account));
 	}
 
-	@GetMapping
+	@GetMapping(produces = { "application/json","application/xml"})
 	public ResponseEntity<List<Account>> listAccounts() {
 		return ResponseEntity.status(HttpStatus.OK).body(accountService.getAllAccounts());
 	}
