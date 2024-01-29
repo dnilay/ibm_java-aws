@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
@@ -66,7 +67,8 @@ public class AccountApi {
 		return ResponseEntity.status(HttpStatus.CREATED).body(accountService.createAccount(account));
 	}
 
-	@GetMapping(produces = { "application/json","application/xml"})
+//	@GetMapping(produces = { "application/json","application/xml"})
+	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<List<Account>> listAccounts() {
 		return ResponseEntity.status(HttpStatus.OK).body(accountService.getAllAccounts());
 	}
