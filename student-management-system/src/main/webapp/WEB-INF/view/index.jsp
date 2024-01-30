@@ -14,6 +14,7 @@
 out.println("<h3>current date/time is: "+new Date()+"</h3><hr/>");
 
 %>
-<a href="show-form">click to begin</a>
+<a href="show-form">click to begin</a><br/>
+<a href="display">Display</a>
 </body>
 </html>
