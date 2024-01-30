@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,16 +29,13 @@ public class HomeController {
 	}
 
 	@GetMapping("/display")
-	public String displayData()
+	public String displayData(Model theModel)
 
 	{
-		ResponseEntity<Student[]> responseEntity=restTemplate.getForEntity("http://localhost:9090/students",Student[].class );
-		Student[] students=responseEntity.getBody();
-		for(Student s:students)
-			
-		{
-			System.out.println(s);
-		}
+		ResponseEntity<Student[]> responseEntity = restTemplate.getForEntity("http://localhost:9090/students",
+				Student[].class);
+		Student[] students = responseEntity.getBody();
+		theModel.addAttribute("students", students);
 		return "display-form";
 	}
 }
